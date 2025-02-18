@@ -30,7 +30,7 @@ Rayfield:Notify({
 },
 })
 
-local autoBlowEnabled = false
+local autoBlowEnabled = false 
 local function autoBlow()
    while autoBlowEnabled do
       game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("BlowBubble")
