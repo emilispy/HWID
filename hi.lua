@@ -54,7 +54,7 @@ local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
       game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "300K Egg", "Multi")
-      wait(0.05)
+      wait(0.0001)
    end
 end
 
