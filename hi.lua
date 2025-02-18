@@ -77,12 +77,21 @@ local function autoPickup()
         local character = game.Players.LocalPlayer.Character
         if character and character.PrimaryPart then
             local playerPosition = character.PrimaryPart.CFrame
+            
+            -- Teleport ALL pickups to player
             for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
                 if not autoPickupEnabled then break end
-                local targetPart = pickup:IsA("Model") and (pickup.PrimaryPart or pickup:FindFirstChildWhichIsA("BasePart")) or pickup
                 
-                if targetPart and targetPart:IsA("BasePart") then
+                -- Find ANY BasePart in the pickup (including nested)
+                local targetPart = pickup:FindFirstChildWhichIsA("BasePart", true)
+                
+                if targetPart then
+                    -- Critical changes below --
+                    if not targetPart.Anchored then
+                        targetPart.Anchored = true -- Temporarily anchor to move
+                    end
                     targetPart.CFrame = playerPosition
+                    targetPart.Anchored = false -- Restore physics
                 end
             end
         end
@@ -96,5 +105,8 @@ local AutoPickupToggle = MainTab:CreateToggle({
     Flag = "autovacuum",
     Callback = function(Value)
         autoPickupEnabled = Value
+        if Value then
+            task.spawn(autoPickup)
+        end
     end,
 })
