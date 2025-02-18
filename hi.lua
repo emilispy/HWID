@@ -1,9 +1,9 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "🔥 Example Script Hub | Game 🔫",
-   LoadingTitle = "🔫 Gun Simulator 💥",
-   LoadingSubtitle = "by 1_F0",
+   Name = "BGS Copy",
+   LoadingTitle = "Bubble Skidder",
+   LoadingSubtitle = "by freakyy",
    KeySystem = false, 
    KeySettings = {
       Title = "Key | Youtube Hub",
@@ -53,7 +53,7 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Common Egg")
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "300K Egg", "Multi")
       wait(0.05)
    end
 end
@@ -67,12 +67,5 @@ local AutoHatchToggle = MainTab:CreateToggle({
       if Value then
          task.spawn(autoHatch)
       end
-   end,
-})
-
-local SellButton = MainTab:CreateButton({
-   Name = "Sell",
-   Callback = function()
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("SellBubble", "Sell")
    end,
 })
