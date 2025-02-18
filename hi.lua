@@ -83,7 +83,7 @@ local function autoPickup()
         for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
             if not autoPickupEnabled then break end
             
-            -- Get position from any BasePart
+            -- Get position from any BasePar
             local targetPart = pickup:IsA("BasePart") and pickup or pickup:FindFirstChildWhichIsA("BasePart")
             
             if targetPart then
