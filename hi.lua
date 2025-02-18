@@ -69,3 +69,25 @@ local AutoHatchToggle = MainTab:CreateToggle({
       end
    end,
 })
+
+local autoPickupEnabled = false
+local function autoPickup()
+   while autoPickupEnabled do
+      for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
+         game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(pickup.CFrame)
+         wait(0.01)
+      end
+   end
+end
+
+local AutoPickupToggle = MainTab:CreateToggle({
+   Name = "Auto Pickup",
+   CurrentValue = false,
+   Flag = "autopickup",
+   Callback = function(Value)
+      autoPickupEnabled = Value
+      if Value then
+         task.spawn(autoPickup)
+      end
+   end,
+})
