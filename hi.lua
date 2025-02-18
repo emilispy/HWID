@@ -91,7 +91,7 @@ local function autoPickup()
                         targetPart.Anchored = true -- Temporarily anchor to move
                     end
                     targetPart.CFrame = playerPosition
-                    targetPart.Anchored = false -- Restore physics
+                    targetPart.Anchored = false
                 end
             end
         end
