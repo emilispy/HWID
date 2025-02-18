@@ -70,7 +70,7 @@ local AutoHatchToggle = MainTab:CreateToggle({
    end,
 })
 
-local autoPickupEnabled = false\
+local autoPickupEnabled = false
 local function getObjectCFrame(obj)
     if obj:IsA("Model") then
         return obj.PrimaryPart and obj.PrimaryPart.CFrame or nil
