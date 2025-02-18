@@ -70,24 +70,44 @@ local AutoHatchToggle = MainTab:CreateToggle({
    end,
 })
 
-local autoPickupEnabled = false
+local autoPickupEnabled = false\
+local function getObjectCFrame(obj)
+    if obj:IsA("Model") then
+        return obj.PrimaryPart and obj.PrimaryPart.CFrame or nil
+    elseif obj:IsA("BasePart") then
+        return obj.CFrame
+    end
+    return nil
+end
+
 local function autoPickup()
-   while autoPickupEnabled do
-      for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
-         game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(pickup.CFrame)
-         wait(0.01)
-      end
-   end
+    while autoPickupEnabled do
+        local character = game.Players.LocalPlayer.Character
+        if not character or not character.PrimaryPart then
+            wait(0.1)
+            continue
+        end
+
+        for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
+            if not autoPickupEnabled then break end
+            
+            local targetCFrame = getObjectCFrame(pickup)
+            if targetCFrame then
+                character:SetPrimaryPartCFrame(targetCFrame)
+                task.wait(0.01)
+            end
+        end
+    end
 end
 
 local AutoPickupToggle = MainTab:CreateToggle({
-   Name = "Auto Pickup",
-   CurrentValue = false,
-   Flag = "autopickup",
-   Callback = function(Value)
-      autoPickupEnabled = Value
-      if Value then
-         task.spawn(autoPickup)
-      end
-   end,
+    Name = "Auto Pickup",
+    CurrentValue = false,
+    Flag = "autopickup",
+    Callback = function(Value)
+        autoPickupEnabled = Value
+        if Value then
+            task.spawn(autoPickup)
+        end
+    end,
 })
