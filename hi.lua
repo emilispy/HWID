@@ -1,9 +1,9 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "BGS Copy",
-   LoadingTitle = "Bubble Skidder",
-   LoadingSubtitle = "by freakyy",
+   Name = "BGS Hub - Xeno support",
+   LoadingTitle = "Loading GUI..",
+   LoadingSubtitle = "By freaky uwu",
    KeySystem = false, 
    KeySettings = {
       Title = "Key | Youtube Hub",
@@ -14,7 +14,7 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-local MainTab = Window:CreateTab("🏠 Home", nil)
+local MainTab = Window:CreateTab("⚡ Main", nil)
 local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
@@ -82,8 +82,6 @@ local function autoPickup()
 
         for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
             if not autoPickupEnabled then break end
-            
-            -- Get position from any BasePar
             local targetPart = pickup:IsA("BasePart") and pickup or pickup:FindFirstChildWhichIsA("BasePart")
             
             if targetPart then
@@ -104,4 +102,36 @@ local AutoPickupToggle = MainTab:CreateToggle({
             task.spawn(autoPickup)
         end
     end,
+})
+
+local autoAchievementsEnabled = false
+local function autoAchievements()
+   while autoAchievementsEnabled do
+      for i = 1, 4 do
+         game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("ClaimAchievement", i)
+         wait(0.1)
+      end
+   end
+end
+
+local AutoAchievementsToggle = MainTab:CreateToggle({
+   Name = "Auto Achievements",
+   CurrentValue = false,
+   Flag = "autoachievements",
+   Callback = function(Value)
+      autoAchievementsEnabled = Value
+      if Value then
+         task.spawn(autoAchievements)
+      end
+   end,
+})
+
+local RedeemCodesButton = MainTab:CreateButton({
+   Name = "Redeem Codes",
+   Callback = function()
+      local codes = {"Update8", "300K", "Update7.5", "YoureAClown", "ticketsohardwaaa", "Update7", "Circus", "Clown", "Update6", "Valentines", "SoulHeart", "Update5", "Carnival", "TilePainter", "300Players", "Basilisk", "Update4", "100K", "Giant Robot", "Drippycheesegang", "Throwback", "PressPlay", "RipHalloween", "HalloweenPt2Never", "SkibidiKingWhoGivesOutBlumpkins", "SorryForDelay", "ReleaseAnd1KGone", "ImSkibidi", "HawkTuah", "Update1", "Halloween", "SpookyInNovember", "Release", "FreeLuck", "FreeSpeed", "FreeShiny", "Free3xLuck", "NewPets"}
+      for _, code in ipairs(codes) do
+         game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteFunction"):InvokeServer("RedeemCode", code)
+      end
+   end,
 })
