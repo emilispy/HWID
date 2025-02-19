@@ -1,12 +1,12 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Paul's BGS Reborn² - v1.0.0",
+   Name = "Paul's BGS Reborn² - v1.8b🎉,
    LoadingTitle = "Loading GUI..",
-   LoadingSubtitle = "By @emilispy",
+   LoadingSubtitle = "Open-Source btw :)",
    KeySystem = true,  
    KeySettings = {
-      Title = "Key Required",
+      Title = "Access Point",
       Subtitle = ".gg/uKh2AGP2b3",
       Note = "🗝️ Key: BGS_GamesAreFun",
       GrabKeyFromSite = false,
@@ -19,7 +19,7 @@ local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
    Title = "Executor supported!",
-   Content = "Loading script..",
+   Content = "Script Loaded",
    Duration = 5,
    Image = 15540208318,
    Actions = {
@@ -59,7 +59,7 @@ local function autoHatch()
 end
 
 local AutoHatchToggle = MainTab:CreateToggle({
-   Name = "Auto Hatch",
+   Name = "Fast Hatch [300K Egg]",
    CurrentValue = false,
    Flag = "autohatch",
    Callback = function(Value)
@@ -165,26 +165,47 @@ local HatLootboxButton = LootboxesTab:CreateButton({
    end,
 })
 
-local MiscTab = Window:CreateTab("➕ Misc", nil)
+local SellTab = Window:CreateTab("🪙 Sell", nil)
+local GemSell = SellTab:CreateButton({
+   Name = "Sell For Gems [20x]",
+   Callback = function()
+      game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(game.Workspace.Activations.ZenSell.Root.CFrame)
+   end,
+})
 
+local SellTab = Window:CreateTab("🪙 Sell", nil)
+local GemSell = SellTab:CreateButton({
+   Name = "Sell For Coins [15x]",
+   Callback = function()
+      game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(game.Workspace.Activations.XPSell.Root.CFrame)
+   end,
+})
+
+local MiscTab = Window:CreateTab("➕ Misc", nil)
 local UnlockAllOverworld = MiscTab:CreateButton({
    Name = "Unlock Islands",
    Callback = function()
       local player = game.Players.LocalPlayer
-      local character = player.Character
-      player.CharacterAdded:Wait()
-      local overworld = game.Workspace:FindFirstChild("FloatingIslands"):FindFirstChild("Overworld")
+      local char = player.Character or player.CharacterAdded:Wait()
+      local overworld = game.Workspace:FindFirstChild("FloatingIslands") and game.Workspace.FloatingIslands:FindFirstChild("Overworld")
       if overworld then
          for _, island in ipairs(overworld:GetChildren()) do
-            local teleportPoint = island:FindFirstChild("TeleportPoint")
-            if teleportPoint then
-               player.Character:SetPrimaryPartCFrame(teleportPoint.CFrame)
+            local tp = island:FindFirstChild("TeleportPoint")
+            if tp then
+               char:SetPrimaryPartCFrame(tp.CFrame)
                wait(0.2)
             end
          end
       end
-      if player.Character and player.Character:FindFirstChild("Humanoid") then
-         player.Character.Humanoid.Health = 0
+      if char and char:FindFirstChild("Humanoid") then
+         char.Humanoid.Health = 0
       end
+   end,
+})
+
+local DisableEvents = MiscTab:CreateButton({
+   Name = "Hide Event Labels",
+   Callback = function()
+      game.Players.LocalPlayer.PlayerGui.ScreenGui.Events.Visible = false
    end,
 })
