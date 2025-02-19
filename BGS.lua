@@ -3,7 +3,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 local Window = Rayfield:CreateWindow({
    Name = "Paul's BGS Reborn² - v1.8b🎉",
    LoadingTitle = "Loading GUI..",
-   LoadingSubtitle = "Open-Source btw :)",
+   LoadingSubtitle = "",
    KeySystem = true,  
    KeySettings = {
       Title = "Access Point",
@@ -79,7 +79,7 @@ local function autoPickup()
             task.wait(0.1)
             continue
         end
-
+      
         for _, pickup in ipairs(game.Workspace.Pickups:GetChildren()) do
             if not autoPickupEnabled then break end
             local targetPart = pickup:IsA("BasePart") and pickup or pickup:FindFirstChildWhichIsA("BasePart")
@@ -165,7 +165,7 @@ local HatLootboxButton = LootboxesTab:CreateButton({
    end,
 })
 
-local SellTab = Window:CreateTab("🪙 Sell", nil)
+local SellTab = Window:CreateTab("🌟 Sell", nil)
 local GemSell = SellTab:CreateButton({
    Name = "Sell For Gems [20x]",
    Callback = function()
@@ -173,7 +173,6 @@ local GemSell = SellTab:CreateButton({
    end,
 })
 
-local SellTab = Window:CreateTab("🪙 Sell", nil)
 local GemSell = SellTab:CreateButton({
    Name = "Sell For Coins [15x]",
    Callback = function()
