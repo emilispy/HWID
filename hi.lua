@@ -168,13 +168,10 @@ local HatLootboxButton = LootboxesTab:CreateButton({
 local MiscTab = Window:CreateTab("➕ Misc", nil)
 
 local UnlockAllOverworld = MiscTab:CreateButton({
-   Name = "Unlock Islands [Overworld]",
+   Name = "Unlock Islands",
    Callback = function()
       local player = game.Players.LocalPlayer
       local character = player.Character
-      if character and character:FindFirstChild("Humanoid") then
-         character.Humanoid.Health = 0
-      end
       player.CharacterAdded:Wait()
       local overworld = game.Workspace:FindFirstChild("FloatingIslands"):FindFirstChild("Overworld")
       if overworld then
@@ -182,37 +179,6 @@ local UnlockAllOverworld = MiscTab:CreateButton({
             local teleportPoint = island:FindFirstChild("TeleportPoint")
             if teleportPoint then
                player.Character:SetPrimaryPartCFrame(teleportPoint.CFrame)
-               wait(0.2)
-            end
-         end
-      end
-      if player.Character and player.Character:FindFirstChild("Humanoid") then
-         player.Character.Humanoid.Health = 0
-      end
-   end,
-})
-
-
-local UnlockAllCarnival = MiscTab:CreateButton({
-   Name = "Unlock Islands [Carnival]",
-   Callback = function()
-      local player = game.Players.LocalPlayer
-      local character = player.Character
-      if character and character:FindFirstChild("Humanoid") then
-         character.Humanoid.Health = 0
-      end
-      character = player.CharacterAdded:Wait()
-      local carnivalRoot = game.Workspace:FindFirstChild("Activations"):FindFirstChild("Carnival"):FindFirstChild("Root")
-      if carnivalRoot then
-         character:SetPrimaryPartCFrame(carnivalRoot.CFrame)
-         wait(1)
-      end
-      local carnival = game.Workspace:FindFirstChild("FloatingIslands"):FindFirstChild("Carnival")
-      if carnival then
-         for _, island in ipairs(carnival:GetChildren()) do
-            local teleportPoint = island:FindFirstChild("TeleportPoint")
-            if teleportPoint then
-               character:SetPrimaryPartCFrame(teleportPoint.CFrame)
                wait(0.2)
             end
          end
