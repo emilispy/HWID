@@ -53,13 +53,13 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "300K Egg", "Multi")
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Stuffed Egg", "Multi")
       wait(0.0001)
    end
 end
 
 local AutoHatchToggle = MainTab:CreateToggle({
-   Name = "Fast Hatch [300K Egg]",
+   Name = "Fast Hatch",
    CurrentValue = false,
    Flag = "autohatch",
    Callback = function(Value)
