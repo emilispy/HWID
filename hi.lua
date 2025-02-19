@@ -1,16 +1,16 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "BGS Hub - Xeno support",
+   Name = "Paul's BGS Reborn² - v1.0.0",
    LoadingTitle = "Loading GUI..",
-   LoadingSubtitle = "By freaky uwu",
-   KeySystem = false, 
+   LoadingSubtitle = "By @emilispy",
+   KeySystem = true, 
    KeySettings = {
-      Title = "Key | Youtube Hub",
-      Subtitle = "Key System",
-      Note = "Key In Discord Server",
-      GrabKeyFromSite = true,
-      Key = {"https://pastebin.com/raw/AtgzSPWK"} 
+      Title = "Key Required,
+      Subtitle = ".gg/uKh2AGP2b3",
+      Note = "🗝️ Key: BGS_GamesAreFun",
+      GrabKeyFromSite = false,
+      Key = "BGS_GamesAreFun"
    }
 })
 
@@ -18,13 +18,13 @@ local MainTab = Window:CreateTab("⚡ Main", nil)
 local MainSection = MainTab:CreateSection("Main")
 
 Rayfield:Notify({
-   Title = "You executed the script",
-   Content = "Very cool gui",
+   Title = "Executor supported!",
+   Content = "Loading script..",
    Duration = 5,
-   Image = 13047715178,
+   Image = 15540208318,
    Actions = {
       Ignore = {
-         Name = "Okay!",
+         Name = "Okay",
          Callback = function() end
    },
 },
@@ -162,5 +162,63 @@ local HatLootboxButton = LootboxesTab:CreateButton({
    Name = "Hat Lootbox - [100 Stars]",
    Callback = function()
       game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("OpenLootbox", "Hat Lootbox")
+   end,
+})
+
+local MiscTab = Window:CreateTab("➕ Misc", nil)
+
+local UnlockAllOverworld = MiscTab:CreateButton({
+   Name = "Unlock Islands [Overworld]",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      local character = player.Character
+      if character and character:FindFirstChild("Humanoid") then
+         character.Humanoid.Health = 0
+      end
+      player.CharacterAdded:Wait()
+      local overworld = game.Workspace:FindFirstChild("FloatingIslands"):FindFirstChild("Overworld")
+      if overworld then
+         for _, island in ipairs(overworld:GetChildren()) do
+            local teleportPoint = island:FindFirstChild("TeleportPoint")
+            if teleportPoint then
+               player.Character:SetPrimaryPartCFrame(teleportPoint.CFrame)
+               wait(0.2)
+            end
+         end
+      end
+      if player.Character and player.Character:FindFirstChild("Humanoid") then
+         player.Character.Humanoid.Health = 0
+      end
+   end,
+})
+
+
+local UnlockAllCarnival = MiscTab:CreateButton({
+   Name = "Unlock Islands [Carnival]",
+   Callback = function()
+      local player = game.Players.LocalPlayer
+      local character = player.Character
+      if character and character:FindFirstChild("Humanoid") then
+         character.Humanoid.Health = 0
+      end
+      character = player.CharacterAdded:Wait()
+      local carnivalRoot = game.Workspace:FindFirstChild("Activations"):FindFirstChild("Carnival"):FindFirstChild("Root")
+      if carnivalRoot then
+         character:SetPrimaryPartCFrame(carnivalRoot.CFrame)
+         wait(1)
+      end
+      local carnival = game.Workspace:FindFirstChild("FloatingIslands"):FindFirstChild("Carnival")
+      if carnival then
+         for _, island in ipairs(carnival:GetChildren()) do
+            local teleportPoint = island:FindFirstChild("TeleportPoint")
+            if teleportPoint then
+               character:SetPrimaryPartCFrame(teleportPoint.CFrame)
+               wait(0.2)
+            end
+         end
+      end
+      if player.Character and player.Character:FindFirstChild("Humanoid") then
+         player.Character.Humanoid.Health = 0
+      end
    end,
 })
