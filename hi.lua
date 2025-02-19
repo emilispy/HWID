@@ -135,3 +135,32 @@ local RedeemCodesButton = MainTab:CreateButton({
       end
    end,
 })
+
+local LootboxesTab = Window:CreateTab("📦 Lootboxes", nil)
+local MysteryLootboxButton = LootboxesTab:CreateButton({
+   Name = "Mystery Lootbox - [1K Stars]",
+   Callback = function()
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("OpenLootbox", "Mystery Lootbox")
+   end,
+})
+
+local SecretLootboxButton = LootboxesTab:CreateButton({
+   Name = "Secret Lootbox - [750 Stars]",
+   Callback = function()
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("OpenLootbox", "Secret Lootbox")
+   end,
+})
+
+local PotionLootboxButton = LootboxesTab:CreateButton({
+   Name = "Potion Lootbox - [150 Stars]",
+   Callback = function()
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("OpenLootbox", "Potion Lootbox")
+   end,
+})
+
+local HatLootboxButton = LootboxesTab:CreateButton({
+   Name = "Hat Lootbox - [100 Stars]",
+   Callback = function()
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("OpenLootbox", "Hat Lootbox")
+   end,
+})
