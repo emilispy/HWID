@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Paul's BGS Reborn² - v1.8b🎉,
+   Name = "Paul's BGS Reborn² - v1.8b🎉",
    LoadingTitle = "Loading GUI..",
    LoadingSubtitle = "Open-Source btw :)",
    KeySystem = true,  
@@ -193,7 +193,7 @@ local UnlockAllOverworld = MiscTab:CreateButton({
             local tp = island:FindFirstChild("TeleportPoint")
             if tp then
                char:SetPrimaryPartCFrame(tp.CFrame)
-               wait(0.2)
+               wait(0.1)
             end
          end
       end
