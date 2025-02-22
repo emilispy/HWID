@@ -4,7 +4,7 @@ local Window = Rayfield:CreateWindow({
    Name = "Paul's BGS Reborn² - v1.8b🎉",
    LoadingTitle = "Loading GUI..",
    LoadingSubtitle = "",
-   KeySystem = true,  
+   KeySystem = false,  
    KeySettings = {
       Title = "Access Point",
       Subtitle = ".gg/uKh2AGP2b3",
@@ -53,7 +53,7 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Stuffed Egg", "Multi")
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Cake Egg", "Multi")
       wait(0.0001)
    end
 end
