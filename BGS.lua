@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Paul's BGS Reborn² - v1.8b🎉",
+   Name = "Paul's BGS Reborn² - v1.10a🎉",
    LoadingTitle = "Loading GUI..",
    LoadingSubtitle = "",
    KeySystem = false,  
@@ -53,7 +53,7 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Dominus Egg", "Multi")
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "600m Egg", "Multi")
       wait(0.0001)
    end
 end
