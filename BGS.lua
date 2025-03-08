@@ -2,7 +2,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/KazeOnTop/Rice-Anti-A
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Paul's BGS Reborn² - v1.10a🎉",
+   Name = "Paul's BGS Reborn² - v1.12a🍀",
    LoadingTitle = "Loading GUI..",
    LoadingSubtitle = "",
    KeySystem = false,  
@@ -54,7 +54,7 @@ local AutoBlowToggle = MainTab:CreateToggle({
 local autoHatchEnabled = false
 local function autoHatch()
    while autoHatchEnabled do
-      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "700M Egg", "Multi")
+      game:GetService("ReplicatedStorage"):WaitForChild("NetworkRemoteEvent"):FireServer("PurchaseEgg", "Clover Egg", "Multi")
       wait(0.0001)
    end
 end
